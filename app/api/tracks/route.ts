@@ -10,7 +10,8 @@ export async function GET() {
       throw new Error("WEREB_URL environment variable is not defined")
     }
     const response = await fetch(BASE_URL)
-    const html = await response.text()
+    // const tracks = await response.json()
+    const html = await response.text();
     const root = parse(html)
 
     const tracks = root
