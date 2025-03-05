@@ -131,6 +131,7 @@ export default function AudioPlayer() {
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
+
       const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100
       setProgress(progress)
     }
@@ -256,9 +257,8 @@ export default function AudioPlayer() {
                     {value.map((track: Track) => (
                       <li
                         key={track.id}
-                        className={`p-2 rounded cursor-pointer flex justify-between items-center ${
-                          currentTrack?.id === track.id ? "bg-primary text-primary-foreground" : "hover:bg-accent"
-                        }`}
+                        className={`p-2 rounded cursor-pointer flex justify-between items-center ${currentTrack?.id === track.id ? "bg-primary text-primary-foreground" : "hover:bg-accent"
+                          }`}
                         onClick={() => playTrack(track)}
                         role="button"
                         tabIndex={0}
@@ -347,7 +347,7 @@ export default function AudioPlayer() {
                             <span>{subFolder}</span>
                           </button>
                           {expandedFolders.has(`${mainFolder}/${subFolder}`) &&
-                            Object.entries(tracks).map(([subSubFolder, subTracks]) => (
+                            Object.entries(tracks as Object).map(([subSubFolder, subTracks]) => (
                               <div key={subSubFolder} className="ml-4">
                                 {Array.isArray(subTracks) &&
                                   subTracks.map((track) => (
@@ -491,7 +491,7 @@ export default function AudioPlayer() {
                   />
                   <div className="flex justify-between text-xs md:text-sm text-muted-foreground">
                     <span>{formatTime(audioRef.current?.currentTime || 0)}</span>
-                    <span>{formatTime(currentTrack.duration)}</span>
+                    <span>{formatTime(audioRef.current?.duration || currentTrack.duration)}</span>
                   </div>
                 </div>
 
