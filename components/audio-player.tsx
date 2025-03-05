@@ -27,14 +27,9 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Track } from "@/lib/ITrack"
 
-interface Track {
-  id: string
-  title: string
-  url: string
-  category: string
-  duration: number
-}
+
 
 const LoadingSkeleton = () => {
   return (
